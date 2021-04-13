@@ -14,7 +14,6 @@ module.exports ={
                 if(err) cd(err);
 
                 const fileName = `${hash.toString("hex")}-${file.originalname}`;
-
                 cd(null,fileName)
             })
         }
