@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path')
 
 const app = express();
 
@@ -17,7 +18,7 @@ mongoose.connect(
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('dev'));
-
+app.use('/files/', express.static(path.resolve(__dirname,'..', 'tmp', 'upload')))
 app.use(require('./routes'))
 
 

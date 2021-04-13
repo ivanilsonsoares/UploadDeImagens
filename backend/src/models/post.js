@@ -9,6 +9,14 @@ const PostShema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+},{
+    toJSON:{
+        virtuals: true,
+    }
 });
+
+PostShema.virtual('url_imagem').get(function(){
+    return `http://localhost:3000/files/${this.key}`
+})
 
 module.exports = mongoose.model("Post",PostShema);
